@@ -9,5 +9,6 @@ Actually this is just a small chatbot which takes keyboard input from the termin
 $ git clone https://github.com/francesco-plt/openai-c
 $ cd openai-c
 $ export OPENAI_API_KEY="sk-xxx"
+$ mkdir build
 $ make build && make run
 ```
