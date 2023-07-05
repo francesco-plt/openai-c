@@ -130,17 +130,19 @@ int main(int argc, char *argv[])
     // char *chat_msg_array_fmt = "[%s]";
     // char *chat_msg_fmt = "{\"role\":\"user\",\"content\":\"%s\"}";
 
-    if (getenv("OPENAI_API_KEY") == NULL)
-    {
-        fprintf(stderr, "OPENAI_API_KEY environment variable not set\n");
-        return -1;
-    }
-    else if (strlen(getenv("OPENAI_API_KEY")) != API_KEY_LENGTH)
+    if (strlen(getenv("OPENAI_API_KEY")) != API_KEY_LENGTH)
     {
         fprintf(stderr, "OPENAI_API_KEY environment variable is not the correct length\n");
         return -1;
     }
-    strcpy(api_key, getenv("OPENAI_API_KEY"));
+
+    strcpy(api_key, getenv("OPENAI_API_KEY")); 
+    
+    if (api_key == NULL)
+    {
+        fprintf(stderr, "OPENAI_API_KEY environment variable not set\n");
+        return -1;
+    }
 
     printf("[Q to quit] [Max length: %d characters]\n", MAX_PROMPT_LENGTH);
     do
